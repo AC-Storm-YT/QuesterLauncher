@@ -1,94 +1,169 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Quester Launcher Patch Notes</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Quester Launcher Patch Notes</title>
 
-    <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+<!-- Google Fonts -->
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
 
-    <style>
-        :root {
-            --bg-color: rgb(17,17,17);
-            --card-bg: #1f1f1f;
-            --text-color: #ffffff;
-            --accent-color: #4f46e5;
-            --border-color: #333333;
-        }
+<style>
+:root {
+    --bg-color: rgb(17,17,17);
+    --card-bg: #1f1f1f;
+    --text-color: #ffffff;
+    --accent-color: #4f46e5;
+}
 
-        body {
-            font-family: 'Inter', sans-serif;
-            background-color: var(--bg-color);
-            color: var(--text-color);
-            margin: 0;
-            padding: 2rem;
-            display: flex;
-            justify-content: center;
-        }
+body {
+    font-family: 'Inter', sans-serif;
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    margin: 0;
+    padding: 2rem;
+    display: flex;
+    justify-content: center;
+}
 
-        .container {
-            max-width: 900px;
-            width: 100%;
-        }
+.container {
+    max-width: 900px;
+    width: 100%;
+    overflow: visible; /* ensure nothing is clipped */
+}
 
-        h1 {
-            text-align: center;
-            color: var(--accent-color);
-            margin-bottom: 2rem;
-        }
+h1 {
+    text-align: center;
+    color: var(--accent-color);
+    margin-bottom: 2rem;
+}
 
-        .release-card {
-            background: var(--card-bg);
-            padding: 1.5rem 2rem;
-            margin-bottom: 1.5rem;
-            border-radius: 12px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.5);
-            border-left: 6px solid var(--accent-color);
-            transition: transform 0.2s;
-        }
+details {
+    margin-bottom: 1.5rem;
+    overflow: visible; /* allow children glow to show */
+    transition: all 0.3s ease;
+}
 
-        .release-card:hover {
-            transform: translateY(-3px);
-        }
+summary {
+    font-weight: 700;
+    font-size: 1.3rem;
+    cursor: pointer;
+    padding: 0.5rem 1rem;
+    background-color: var(--card-bg);
+    border-radius: 8px;
+    transition: background 0.3s;
+}
 
-        .version {
-            font-weight: 700;
-            font-size: 1.2rem;
-            margin-bottom: 0.5rem;
-        }
+summary:hover {
+    background-color: #2a2a2a;
+}
 
-        .date {
-            color: #bbbbbb;
-            font-size: 0.9rem;
-            margin-bottom: 1rem;
-        }
+.release-card {
+    background: var(--card-bg);
+    padding: 1rem 1.5rem;
+    margin: 0.5rem 0;
+    border-radius: 8px;
+    position: relative;
+    opacity: 0;
+    transform: translateY(10px) scale(1);
+    animation: fadeSlideIn 0.5s forwards;
+    transition: 
+        transform 0.3s ease, 
+        box-shadow 0.3s ease, 
+        margin 0.3s ease;
+    z-index: 1; /* base z-index */
+}
 
-        h3 {
-            margin: 1rem 0 0.5rem 0;
-            color: var(--accent-color);
-        }
+.release-card::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: 4px;
+    border-radius: 8px 0 0 8px;
+    background-color: var(--accent-color);
+    z-index: 1;
+}
 
-        ul {
-            padding-left: 1.5rem;
-            margin: 0;
-        }
+.release-card:hover {
+    transform: translateY(-5px) scale(1.05); 
+    margin: 1rem 0; 
+    z-index: 10; /* put hovered card above others */
+    box-shadow:
+        0 0 15px var(--accent-color),
+        0 0 30px rgba(79,70,229,0.5),
+        0 0 45px rgba(79,70,229,0.4),
+        0 0 60px rgba(79,70,229,0.3);
+}
 
-        li {
-            margin-bottom: 0.5rem;
-        }
+/* Animate cards with slight delay for cascade effect */
+.release-card:nth-child(1) { animation-delay: 0.1s; }
+.release-card:nth-child(2) { animation-delay: 0.2s; }
+.release-card:nth-child(3) { animation-delay: 0.3s; }
+.release-card:nth-child(4) { animation-delay: 0.4s; }
 
-        footer {
-            text-align: center;
-            margin-top: 3rem;
-            font-size: 0.85rem;
-            color: #aaaaaa;
-        }
-    </style>
+@keyframes fadeSlideIn {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.version {
+    font-weight: 700;
+    font-size: 1.1rem;
+    margin-bottom: 0.5rem;
+}
+
+.date {
+    color: #bbbbbb;
+    font-size: 0.85rem;
+    margin-bottom: 0.5rem;
+}
+
+h3 {
+    margin: 0.8rem 0 0.3rem 0;
+    color: var(--accent-color);
+}
+
+ul {
+    padding-left: 1.5rem;
+    margin: 0;
+}
+
+li {
+    margin-bottom: 0.4rem;
+}
+
+footer {
+    text-align: center;
+    margin-top: 3rem;
+    font-size: 0.85rem;
+    color: #aaaaaa;
+}
+</style>
 </head>
 <body>
-    <div class="container">
-        <h1>Quester Launcher - Notes de correctif</h1>
+<div class="container">
+    <h1>Quester Launcher - Notes de correctif</h1>
+
+    <!-- 1.1.x versions -->
+    <details open>
+        <summary>v1.1.x</summary>
+
+        <div class="release-card">
+            <div class="version">v1.1.2</div>
+            <div class="date">2025-09-01</div>
+            <h3>Correctifs</h3>
+            <ul>
+                <li>Correction de l’ouverture de la page des notes de correctif pour tous les types de connexion (locale ou publique).</li>
+            </ul>
+            <h3>Améliorations</h3>
+            <ul>
+                <li>Traduction de l’interface de l’anglais vers le français.</li>
+            </ul>
+        </div>
 
         <div class="release-card">
             <div class="version">v1.1.1</div>
@@ -114,6 +189,12 @@
             </ul>
         </div>
 
+    </details>
+
+    <!-- 1.0.x versions -->
+    <details>
+        <summary>v1.0.x</summary>
+
         <div class="release-card">
             <div class="version">v1.0.1</div>
             <div class="date">2025-08-31</div>
@@ -132,7 +213,9 @@
             </ul>
         </div>
 
-        <footer>© 2025 Quester Launcher • Tous droits réservés</footer>
-    </div>
+    </details>
+
+    <footer>© 2025 Quester Launcher • Tous droits réservés</footer>
+</div>
 </body>
 </html>
