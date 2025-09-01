@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quester Launcher Patch Notes</title>
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            --bg-color: rgb(17,17,17);
+            --card-bg: #1f1f1f;
+            --text-color: #ffffff;
+            --accent-color: #4f46e5;
+            --border-color: #333333;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            margin: 0;
+            padding: 2rem;
+            display: flex;
+            justify-content: center;
+        }
+
+        .container {
+            max-width: 900px;
+            width: 100%;
+        }
+
+        h1 {
+            text-align: center;
+            color: var(--accent-color);
+            margin-bottom: 2rem;
+        }
+
+        .release-card {
+            background: var(--card-bg);
+            padding: 1.5rem 2rem;
+            margin-bottom: 1.5rem;
+            border-radius: 12px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.5);
+            border-left: 6px solid var(--accent-color);
+            transition: transform 0.2s;
+        }
+
+        .release-card:hover {
+            transform: translateY(-3px);
+        }
+
+        .version {
+            font-weight: 700;
+            font-size: 1.2rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .date {
+            color: #bbbbbb;
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+        }
+
+        h3 {
+            margin: 1rem 0 0.5rem 0;
+            color: var(--accent-color);
+        }
+
+        ul {
+            padding-left: 1.5rem;
+            margin: 0;
+        }
+
+        li {
+            margin-bottom: 0.5rem;
+        }
+
+        footer {
+            text-align: center;
+            margin-top: 3rem;
+            font-size: 0.85rem;
+            color: #aaaaaa;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Quester Launcher - Notes de correctif</h1>
+
+        <div class="release-card">
+            <div class="version">v1.1.1</div>
+            <div class="date">2025-09-01</div>
+            <h3>Correctifs</h3>
+            <ul>
+                <li>Correction des erreurs lors de la vérification de la mise à jour hors réseau local.</li>
+                <li>Correction de la copie des fichiers lors de l’extraction du ZIP.</li>
+                <li>Gestion améliorée du chemin d’installation dynamique.</li>
+            </ul>
+            <h3>Améliorations</h3>
+            <ul>
+                <li>Blocage silencieux des erreurs si le serveur FTP est inaccessible.</li>
+            </ul>
+        </div>
+
+        <div class="release-card">
+            <div class="version">v1.1.0</div>
+            <div class="date">2025-09-01</div>
+            <h3>Nouvelles fonctionnalités</h3>
+            <ul>
+                <li>Système de mise à jour via FTP.</li>
+            </ul>
+        </div>
+
+        <div class="release-card">
+            <div class="version">v1.0.1</div>
+            <div class="date">2025-08-31</div>
+            <h3>Améliorations</h3>
+            <ul>
+                <li>Modification de l'arrière plan de base.</li>
+            </ul>
+        </div>
+
+        <div class="release-card">
+            <div class="version">v1.0.0</div>
+            <div class="date">2025-07-24</div>
+            <h3>Sortie</h3>
+            <ul>
+                <li>Première version disponible.</li>
+            </ul>
+        </div>
+
+        <footer>© 2025 Quester Launcher • Tous droits réservés</footer>
+    </div>
+</body>
+</html>
