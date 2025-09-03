@@ -142,14 +142,88 @@ footer {
     font-size: 0.85rem;
     color: #aaaaaa;
 }
+
+.releaseday {
+    color: #6128a7;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-top: 1rem;
+    margin-bottom: 0.5rem;
+    text-shadow: 0 0 8px #6128a7, 0 0 16px #6128a7;
+}
+
+.coming-soon {
+    color: #ff6b00;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-top: 1rem;
+    margin-bottom: 0.5rem;
+    text-shadow: 0 0 8px #ff6b00, 0 0 16px #ff6b00;
+}
+
+.new-release {
+    color: #00ffd0;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-top: 1rem;
+    margin-bottom: 0.5rem;
+    text-shadow: 0 0 8px #00ffd0, 0 0 16px #00ffd0;
+}
+
+.system-update {
+    color: #28a745;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-top: 1rem;
+    margin-bottom: 0.5rem;
+    text-shadow: 0 0 8px #28a745, 0 0 16px #28a745;
+}
+
 </style>
 </head>
 <body>
 <div class="container">
     <h1>Quester Launcher - Notes de correctif</h1>
 
-    <!-- 1.1.x versions -->
+        <!-- 1.2.x versions -->
     <details open>
+        <summary>v1.2.x</summary>
+
+        <div class="release-card">
+            <div class="version">v1.2.0</div>
+            <div class="date">2025-09-02</div>
+            <h3 class="new-release">Launcher amélioré</h3>
+            <h3>Correctifs</h3>
+            <ul><li>Résolution des problèmes relatifs à l’affichage des icônes lors du chargement d’un dossier.</li>
+                <li>Ajout d’une marge supplémentaire afin de garantir l’affichage complet du contenu textuel des cartes de jeux situées en bas du panneau lors du défilement.</li>
+            </ul>
+            <h3>Améliorations</h3>
+            <ul>
+                <li>Optimisation générale du code pour améliorer la performance et la réactivité du launcher.</li>
+                <li>Activation du double buffering sur le panneau de jeux afin de réduire le scintillement lors du redimensionnement de la fenêtre.</li>
+                <li>Renforcement de la stabilité du launcher lors du lancement des jeux.</li>
+            </ul>
+            <h3>Nouvelles fonctionnalités</h3>
+            <ul>
+                <li>Refonte du design des cartes de jeux pour une meilleure lisibilité et présentation.</li>
+                <li>Mise en place d’un système amélioré de gestion et d’affichage des cartes de jeux dans le panneau.</li>
+                <li>Mise en place d’une page de paramètres permettant :
+                    <ul>
+                        <li>de rendre les cartes de jeux transparentes ou non.</li>
+                        <li>d’activer ou désactiver les mise à jour automatique du launcher.</li>
+            </ul>
+        </li>
+            </ul>
+        </div>
+
+    </details>
+
+    <!-- 1.1.x versions -->
+    <details>
         <summary>v1.1.x</summary>
 
         <div class="release-card">
@@ -192,6 +266,7 @@ footer {
         <div class="release-card">
             <div class="version">v1.1.0</div>
             <div class="date">2025-09-01</div>
+            <h3 class="system-update">Mise à jour système importante</h3>
             <h3>Nouvelles fonctionnalités</h3>
             <ul>
                 <li>Système de mise à jour via FTP.</li>
@@ -216,6 +291,7 @@ footer {
         <div class="release-card">
             <div class="version">v1.0.0</div>
             <div class="date">2025-07-24</div>
+            <h3 class="releaseday">Lancement initial</h3>
             <h3>Sortie</h3>
             <ul>
                 <li>Première version disponible.</li>
