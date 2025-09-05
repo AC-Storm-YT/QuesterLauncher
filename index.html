@@ -38,23 +38,6 @@ h1 {
     margin-bottom: 2rem;
 }
 
-#google_translate_element {
-    position: fixed;
-    top: 10px;
-    right: 10px;
-    z-index: 9999;
-}
-
-#google_translate_element select {
-    background-color: var(--card-bg);
-    color: var(--text-color);
-    border-radius: 5px;
-    padding: 0.2rem 0.5rem;
-    border: none;
-    font-size: 0.9rem;
-    cursor: pointer;
-}
-
 
 details {
     margin-bottom: 1.5rem;
@@ -204,7 +187,10 @@ footer {
 </style>
 </head>
 <body>
-<div id="google_translate_element"></div>
+<select id="langSelector" style="position: fixed; top: 10px; right: 10px; z-index: 9999; padding: 0.3rem 0.6rem;">
+  <option value="fr">FR</option>
+  <option value="en">EN</option>
+</select>
 <div class="container">
     <h1>Quester Launcher - Notes de correctif</h1>
 
@@ -358,18 +344,87 @@ footer {
 
     <footer>© 2025 Quester Launcher • Tous droits réservés</footer>
 </div>
+<script>
+// Full French → English dictionary for your patch notes
+const translations = 
+{
+  "Quester Launcher - Notes de correctif": "Quester Launcher – Patch Notes",
+  "à déterminer": "To Be Determined",
+  "À venir": "Upcoming",
+  "Nouvelles fonctionnalités": "New Features",
+  "En développement...": "In Development…",
+  "Correctifs": "Fixes",
+  "Prise en charge des raccourcis Internet (.url) dans le lanceur.": "Support for Internet shortcuts (.url) within the launcher.",
+  "Mise à jour système importante": "Important System Update",
+  "Améliorations": "Enhancements",
+  "Système de mise à jour de FTP et GitHub vers Dropbox seulement.": "FTP and GitHub update system now exclusively via Dropbox.",
+  "Activation/désactivation optionnelle du double buffering sur le panneau de jeux pour réduire le scintillement.": "Optional double buffering on the game panel to minimize flickering.",
+  "Amélioration de la page de paramètres : ajout de badges colorés indiquant l’impact sur les performances et affichage d’une description courte au survol des options.": "Settings page improvements: added colored badges indicating performance impact and brief descriptions on hover.",
+  "Launcher amélioré": "Launcher Enhanced",
+  "Système de mise à jour via FTP.": "FTP-based Update System.",
+  "Système de mise à jour via FTP et GitHub.": "FTP and GitHub–based Update System.",
+  "Résolution des problèmes relatifs à l’affichage des icônes lors du chargement d’un dossier.": "Resolved issues with icon display when loading folders.",
+  "Ajout d’une marge supplémentaire afin de garantir l’affichage complet du contenu textuel des cartes de jeux situées en bas du panneau lors du défilement.": "Added extra margin to ensure complete visibility of game card text at the bottom of the panel while scrolling.",
+  "Optimisation générale du code pour améliorer la performance et la réactivité du launcher.": "General code optimizations to enhance launcher performance and responsiveness.",
+  "Activation du double buffering sur le panneau de jeux afin de réduire le scintillement lors du redimensionnement de la fenêtre.": "Enabled double buffering on the game panel to reduce flickering during window resizing.",
+  "Renforcement de la stabilité du launcher lors du lancement des jeux.": "Improved launcher stability when starting games.",
+  "Refonte du design des cartes de jeux pour une meilleure lisibilité et présentation.": "Redesigned game cards for improved readability and presentation.",
+  "Mise en place d’un système amélioré de gestion et d’affichage des cartes de jeux dans le panneau.": "Implemented an enhanced system for managing and displaying game cards within the panel.",
+  "Mise en place d’une page de paramètres permettant :": "Introduced a settings page allowing:",
+  "de rendre les cartes de jeux transparentes ou non.": "Option to make game cards transparent or not.",
+  "d’activer ou désactiver les mise à jour automatique du launcher.": "Option to enable or disable automatic launcher updates.",
+  "Correction de l’ouverture de la page des notes de correctif pour tous les types de connexion (locale ou publique).": "Fixed patch notes page accessibility for all connection types (local or public).",
+  "Traduction de l’interface de l’anglais vers le français.": "Interface translation from English to French.",
+  "Correction des erreurs lors de la vérification de la mise à jour hors réseau local.": "Resolved errors encountered when checking for updates outside the local network.",
+  "Correction de la copie des fichiers lors de l’extraction du ZIP.": "Fixed file copying issues during ZIP extraction.",
+  "Gestion améliorée du chemin d’installation dynamique.": "Improved management of dynamic installation paths.",
+  "Blocage silencieux des erreurs si le serveur FTP est inaccessible.": "Silently blocked errors if the FTP server is unreachable.",
+  "Modification de l'arrière plan de base.": "Updated base background.",
+  "Lancement initial": "Initial Launch",
+  "Sortie": "Release",
+  "Première version disponible.": "First version available.",
+  "© 2025 Quester Launcher • Tous droits réservés": "© 2025 Quester Launcher • All Rights Reserved"
+};
 
-<script type="text/javascript">
-function googleTranslateElementInit() {
-  new google.translate.TranslateElement({
-    pageLanguage: 'fr',
-    includedLanguages: 'fr,en',
-    layout: google.translate.TranslateElement.InlineLayout.SIMPLE
-  }, 'google_translate_element');
+// Walk text nodes safely
+const textNodes = [];
+function walk(node) {
+  if(node.nodeType === Node.TEXT_NODE && node.textContent.trim() !== "") {
+    textNodes.push({node, fr: node.textContent});
+  } else {
+    node.childNodes.forEach(walk);
+  }
 }
+
+// Function to apply translation
+function translate(lang) {
+  textNodes.forEach(item => {
+    let text = item.fr;
+    if(lang === "en"){
+      for(const [fr, en] of Object.entries(translations)){
+        text = text.split(fr).join(en);
+      }
+    }
+    item.node.textContent = text;
+  });
+  // Store choice in localStorage
+  localStorage.setItem("selectedLang", lang);
+}
+
+window.addEventListener("DOMContentLoaded", () => {
+  walk(document.body);
+
+  const selector = document.getElementById("langSelector");
+
+  // Load saved language from localStorage
+  const savedLang = localStorage.getItem("selectedLang") || "fr";
+  selector.value = savedLang;
+  translate(savedLang);
+
+  selector.addEventListener("change", function() {
+    translate(this.value);
+  });
+});
 </script>
-
-<script type="text/javascript" src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
-
 </body>
 </html>
