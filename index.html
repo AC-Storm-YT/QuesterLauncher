@@ -184,6 +184,16 @@ footer {
     text-shadow: 0 0 8px #28a745, 0 0 16px #28a745;
 }
 
+.definitive-edition {
+    color: #da137d;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-top: 1rem;
+    margin-bottom: 0.5rem;
+    text-shadow: 0 0 8px #da137d, 0 0 16px #da137d;
+}
+
 </style>
 </head>
 <body>
@@ -197,6 +207,20 @@ footer {
             <!-- 1.3.x versions -->
     <details open>
         <summary>v1.3.x</summary>
+
+        <div class="release-card">
+            <div class="version">v1.3.1</div>
+            <div class="date">2026-03-23</div>
+            <h3 class="definitive-edition">Édition Définitive</h3>
+            <h3>Correctifs</h3>
+            <ul>
+                <li>Résolution d'un problème d'affichage des bulles d'aide (ToolTips).</li>
+            </ul>
+            <h3>Améliorations</h3>
+            <ul>
+                <li>Sauvegarde automatique des dimensions de la fenêtre lors de la fermeture du launcher.</li>
+            </ul>
+        </div>
 
         <div class="release-card">
             <div class="version">v1.3.0</div>
@@ -348,12 +372,14 @@ footer {
 
     </details>
 
-    <footer>© 2025 Quester Launcher • Tous droits réservés</footer>
+    <footer>© 2026 Quester Launcher • Tous droits réservés</footer>
 </div>
 <script>
 // Full French → English dictionary for your patch notes
 const translations = 
 {
+  "Sauvegarde automatique des dimensions de la fenêtre lors de la fermeture du launcher.": "The launcher's window dimensions are now automatically saved and restored upon exit.",
+  "Résolution d'un problème d'affichage des bulles d'aide (ToolTips).": "Fixed a display issue affecting the tooltips.",
   "Modification de la langue par défaut du launcher de l’anglais vers le français.": "Changed the launcher’s default language from English to French.",
   "Modification de la taille par défaut de la fenêtre du launcher.": "Changed the default size of the launcher window.",
   "Ajout d’une barre de recherche dans le panneau de jeux pour trouver rapidement un jeu.": "Added a search bar in the game panel to quickly find a game.",
@@ -393,7 +419,8 @@ const translations =
   "Lancement initial": "Initial Launch",
   "Sortie": "Release",
   "Première version disponible.": "First version available.",
-  "© 2025 Quester Launcher • Tous droits réservés": "© 2025 Quester Launcher • All Rights Reserved"
+  "Édition Définitive": "Definitive Edition",
+  "© 2026 Quester Launcher • Tous droits réservés": "© 2026 Quester Launcher • All Rights Reserved"
 };
 
 // Walk text nodes safely
